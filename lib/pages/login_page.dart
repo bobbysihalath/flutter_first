@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/utils/routes.dart';
+import 'package:flutter/cupertino.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -19,6 +20,7 @@ class _LoginPageState extends State<LoginPage> {
       });
       await Future.delayed(Duration(seconds: 1));
       await Navigator.pushNamed(context, MyRoutes.homeRoute);
+
       setState(() {
         changeButton = false;
       });
