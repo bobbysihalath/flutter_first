@@ -1,19 +1,10 @@
-class CatalogModel{
-  static final items = [
-    Item(
-        id: "Codepur001",
-        name: "Iphone 12 Pro",
-        desc: "Apple Iphone 12th generation",
-        price: 999,
-        color: "#33505a",
-        image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRISJ6msIu4AU9_M9ZnJVQVFmfuhfyJjEtbUm3ZK11_8IV9TV25-1uM5wHjiFNwKy99w0mR5Hk&usqp=CAc")
-  ];
-
+import 'dart:convert';
+class CatalogModel {
+  static List<Item> items;
 }
 
 class Item {
-  final String id;
+  final int id;
   final String name;
   final String desc;
   final num price;
@@ -21,5 +12,46 @@ class Item {
   final String image;
 
   Item({this.id, this.name, this.desc, this.price, this.color, this.image});
-}
 
+  Map<String, dynamic> toMap() {
+    return {
+      'id': this.id,
+      'name': this.name,
+      'desc': this.desc,
+      'price': this.price,
+      'color': this.color,
+      'image': this.image,
+    };
+  }
+
+  factory Item.fromMap(Map<String, dynamic> map) {
+    return Item(
+      id: map['id'] as int,
+      name: map['name'] as String,
+      desc: map['desc'] as String,
+      price: map['price'] as num,
+      color: map['color'] as String,
+      image: map['image'] as String,
+    );
+  }
+// after get load data from JSON and Map
+  // factory Item.fromMap(Map<String, dynamic> map) {
+  //   return Item(
+  //       id: map["id"],
+  //       name: map["name"],
+  //       desc: map["desc"],
+  //       price: map["price"],
+  //       color: map["color"],
+  //       image: map["image"],
+  //   );
+  // }
+  //
+  // toMap() =>{
+  //   "id":id,
+  //   "name":name,
+  //   "desc":desc,
+  //   "price":price,
+  //   "color":color,
+  //   "image":image,
+  // };
+}
