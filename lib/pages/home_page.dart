@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:flutter_catalog/models/catalog.dart';
+import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/drawer.dart';
 import 'package:flutter_catalog/widgets/item_widget.dart';
 import 'package:flutter_catalog/widgets/theme.dart';
@@ -48,6 +49,12 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               CatalogHeader(),
+              MaterialButton(
+                child: Text('Print'),
+                onPressed: (){
+                  Navigator.pushNamed(context, MyRoutes.printRoute);
+                },
+              ),
               if (CatalogModel.items != null && CatalogModel.items.isNotEmpty)
                 CatalogList().expand()
               else
@@ -118,13 +125,9 @@ class CatalogItem extends StatelessWidget {
                       print(catalog.name);
                     },
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                          MyTheme.darkBluishColor
-                      ),
-                      shape: MaterialStateProperty.all(
-                        StadiumBorder()
-                      )
-                    ),
+                        backgroundColor:
+                            MaterialStateProperty.all(MyTheme.darkBluishColor),
+                        shape: MaterialStateProperty.all(StadiumBorder())),
                     child: "Buy".text.make())
               ],
             ).pOnly(right: 8.0)

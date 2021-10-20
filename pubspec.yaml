@@ -30,6 +30,11 @@ dependencies:
   cupertino_icons: ^1.0.1
   google_fonts: ^1.1.2
   velocity_x: ^1.4.1
+  native_pdf_renderer: any
+  image: any
+  pdf: any
+  intl: any
+
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +56,7 @@ flutter:
   assets:
     - assets/images/
     - assets/files/
+    - assets/front/
   # - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
