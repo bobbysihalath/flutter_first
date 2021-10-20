@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
@@ -12,6 +11,19 @@ class PDFHelper {
   static final today = new DateTime.now();
   static final nextSevenDay = today.add(const Duration(days: 7));
   static final formatNum = NumberFormat("#,###");
+
+  static Future<void> testPDF() async {
+    final pdf = pw.Document();
+    final font = await rootBundle.load("assets/front/NotoSans-Regular.ttf");
+    pdf.addPage(
+      pw.Page(
+        build: (pw.Context context) => pw.Center(
+          child: pw.Text('Hello World!'),
+        ),
+      ),
+    );
+    await savePDF(pdf);
+  }
 
   static Future<void> generatePdf(List<TransactionData> trx, int ism,
       String date, String billNum, String member) async {
@@ -43,7 +55,7 @@ class PDFHelper {
                   txtLaosValue(ttf, 'ຕົວແທນນະຄອນຫລວງເລກ 4', 26.0, false),
                   txtLaosValue(ttf, 'ນະຄອນປາກເຊ', 26.0, false),
                   txtLaosValue(
-                      ttf, 'ງວດທີ: $ism | ອອກວັນທີ: $newDate', 20.0, false),
+                      ttf, 'ງວດທີ: $ism | ອອກວັນທີ: ', 20.0, false),
                   txtLaosValue(
                       ttf,
                       'ເລກບິນ: ${billNum.substring(billNum.length - 4, billNum.length)}',
@@ -157,4 +169,6 @@ class PDFHelper {
 class TransactionData {
   int sale;
   int lek;
+
+  TransactionData(int sale, int lek);
 }
