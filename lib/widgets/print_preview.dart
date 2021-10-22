@@ -1,6 +1,4 @@
 import 'dart:typed_data';
-
-import 'package:image/image.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:native_pdf_renderer/native_pdf_renderer.dart' as nativePdf;
 

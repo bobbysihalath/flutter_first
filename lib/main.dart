@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_catalog/pages/login_page.dart';
+import 'package:flutter_catalog/pages/open_preview.dart';
 import 'package:flutter_catalog/pages/print_page.dart';
 import 'package:flutter_catalog/utils/routes.dart';
 import 'package:flutter_catalog/widgets/theme.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.loginRoute: (context) => LoginPage(),
         MyRoutes.printRoute: (context) => PrintPage(),
+        MyRoutes.pdfView: (context) => OpenPageView(),
       },
     );
   }

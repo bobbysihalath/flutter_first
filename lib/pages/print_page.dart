@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/models/transaction_data.dart';
 import 'package:flutter_catalog/utils/pdf_util.dart';
-import 'package:flutter_catalog/widgets/print_preview.dart';
-import 'package:native_pdf_renderer/native_pdf_renderer.dart';
+
 
 class PrintPage extends StatelessWidget {
   const PrintPage({Key key}) : super(key: key);
@@ -12,7 +12,15 @@ class PrintPage extends StatelessWidget {
     List<TransactionData> _data = [
       TransactionData(
         200,
-        200
+        212
+      ),
+      TransactionData(
+          200,
+          200
+      ),
+      TransactionData(
+          200,
+          200
       ),
       TransactionData(
           200,
@@ -30,11 +38,13 @@ class PrintPage extends StatelessWidget {
             children: [
               MaterialButton(
                 child: Text('save to pdf'),
-                onPressed: () => PDFHelper.testPDF(),
+                onPressed: () => PDFHelper.generatePdf(_data, 22222, DateTime.now().toString(), '23434', '34343434'),
               ),
               MaterialButton(
                 child: Text('print'),
-                onPressed: () => PrintHelper.genImage(),
+                onPressed: () {
+                  Navigator.pushNamed(context,'/pdf_view');
+                },
               ),
             ],
           )

@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
-
+import 'package:flutter_catalog/models/transaction_data.dart';
 
 class PDFHelper {
   static DateFormat formater = DateFormat('dd-MM-yyyy hh:mm');
@@ -12,22 +12,11 @@ class PDFHelper {
   static final nextSevenDay = today.add(const Duration(days: 7));
   static final formatNum = NumberFormat("#,###");
 
-  static Future<void> testPDF() async {
-    final pdf = pw.Document();
-    final font = await rootBundle.load("assets/front/NotoSans-Regular.ttf");
-    pdf.addPage(
-      pw.Page(
-        build: (pw.Context context) => pw.Center(
-          child: pw.Text('Hello World!'),
-        ),
-      ),
-    );
-    await savePDF(pdf);
-  }
+
 
   static Future<void> generatePdf(List<TransactionData> trx, int ism,
       String date, String billNum, String member) async {
-    final font = await rootBundle.load("assets/front/NotoSans-Regular.ttf");
+    final font = await rootBundle.load("assets/front/Phetsarath-OT.ttf");
     final ttf = pw.Font.ttf(font);
     var customdate = date.substring(0, 10);
     var year = customdate.substring(0, 4);
@@ -37,7 +26,7 @@ class PDFHelper {
     print('date: ' + day + ' month: ' + month + ' year: ' + year);
     final newDate = day + '-' + month + '-' + year;
     print('newDate: ' + newDate);
-    final fontNumber = await rootBundle.load("assets/front/NotoSans-Regular.ttf");
+    final fontNumber = await rootBundle.load("assets/front/Phetsarath-OT.ttf");
     final ttfNumber = pw.Font.ttf(fontNumber);
     var total = 0;
     final pdf = pw.Document();
@@ -74,34 +63,35 @@ class PDFHelper {
               child: pw.Column(
                 // mainAxisAlignment: pw.MainAxisAlignment.start,
                 crossAxisAlignment: pw.CrossAxisAlignment.start,
-                children: List.generate(trx.length, (i) {
-                  //Calculate total amount
-                  total += trx[i].sale;
-                  return pw.Center(
-                      child: pw.Row(children: [
-                    //Column1
-                    if (i % 2 == 0)
-                      txtEnglish(
-                          '[${trx[i].lek}]=', PdfColors.black, ttfNumber),
-                    if (i % 2 == 0)
-                      txtEnglish(
-                          formatNum.format(trx[i].sale).toString() + ' | ',
-                          PdfColors.black,
-                          ttfNumber),
-                    //Column2
-                    if (i % 2 == 0 && i + 1 < trx.length)
-                      txtEnglish(
-                          '[${trx[i + 1].lek}]=', PdfColors.black, ttfNumber),
-                    if (i % 2 == 0 && i + 1 < trx.length)
-                      txtEnglish(formatNum.format(trx[i + 1].sale).toString(),
-                          PdfColors.black, ttfNumber),
-                    //Invisible
-                    if (i == trx.length - 1 && i % 2 == 0)
-                      txtEnglish('----', PdfColors.white, ttfNumber),
-                    if (i == trx.length - 1 && i % 2 == 0)
-                      txtEnglish('----', PdfColors.white, ttfNumber),
-                  ]));
-                }),
+                // children: List.generate(trx.length, (i) {
+                //   //Calculate total amount
+                //   total += trx[i].sale;
+                //   return pw.Center(
+                //       child: pw.Row(children: [
+                //     //Column1
+                //     if (i % 2 == 0)
+                //       txtEnglish(
+                //           '[${trx[i].lek}]=', PdfColors.black, ttfNumber),
+                //     if (i % 2 == 0)
+                //       txtEnglish(
+                //           formatNum.format(trx[i].sale).toString() + ' | ',
+                //           PdfColors.black,
+                //           ttfNumber),
+                //     //Column2
+                //     if (i % 2 == 0 && i + 1 < trx.length)
+                //       txtEnglish(
+                //           '[${trx[i + 1].lek}]=', PdfColors.black, ttfNumber),
+                //     if (i % 2 == 0 && i + 1 < trx.length)
+                //       txtEnglish(formatNum.format(trx[i + 1].sale).toString(),
+                //           PdfColors.black, ttfNumber),
+                //     //Invisible
+                //     if (i == trx.length - 1 && i % 2 == 0)
+                //       txtEnglish('----', PdfColors.white, ttfNumber),
+                //     if (i == trx.length - 1 && i % 2 == 0)
+                //       txtEnglish('----', PdfColors.white, ttfNumber),
+                //   ]));
+                // }),
+
               ),
             ),
             pw.Center(
@@ -166,9 +156,3 @@ class PDFHelper {
   }
 }
 
-class TransactionData {
-  int sale;
-  int lek;
-
-  TransactionData(int sale, int lek);
-}
