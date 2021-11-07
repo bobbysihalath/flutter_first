@@ -12,35 +12,35 @@ class HomeDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      bottom: false,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-        ),
-        backgroundColor: MyTheme.creamColor,
-        bottomNavigationBar: Container(
-          color: Colors.white,
-          child: ButtonBar(
-            alignment: MainAxisAlignment.spaceBetween,
-            buttonPadding: Vx.mH8,
-            children: [
-              "\$${catalog.price}".text.bold.xl4.red500.make(),
-              ElevatedButton(
-                onPressed: () {
-                  print(catalog.name);
-                },
-                style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateProperty.all(MyTheme.darkBluishColor),
-                  shape: MaterialStateProperty.all(StadiumBorder()),
-                ),
-                child: "Buy".text.xl.make(),
-              ).wh(100, 50)
-            ],
-          ).p32(),
-        ),
-        body: Column(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+      ),
+      backgroundColor: MyTheme.creamColor,
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        child: ButtonBar(
+          alignment: MainAxisAlignment.spaceBetween,
+          buttonPadding: Vx.mH8,
+          children: [
+            "\$${catalog.price}".text.bold.xl4.red500.make(),
+            ElevatedButton(
+              onPressed: () {
+                print(catalog.name);
+              },
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(MyTheme.darkBluishColor),
+                shape: MaterialStateProperty.all(StadiumBorder()),
+              ),
+              child: "Add to cart".text.xl.make(),
+            ).wh(125, 50)
+          ],
+        ).p32(),
+      ),
+      body: SafeArea(
+        bottom: false,
+        child: Column(
           children: [
             Hero(
               tag: Key(catalog.id.toString()),
@@ -67,6 +67,11 @@ class HomeDetailPage extends StatelessWidget {
                           .xl
                           .make(),
                       10.heightBox,
+                      "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."
+                          .text
+                          .textStyle(context.captionStyle)
+                          .make()
+                          .p16()
                     ],
                   ).py64(),
                 ),

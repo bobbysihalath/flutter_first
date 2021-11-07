@@ -68,7 +68,7 @@ class CatalogItem extends StatelessWidget {
                         backgroundColor:
                             MaterialStateProperty.all(MyTheme.darkBluishColor),
                         shape: MaterialStateProperty.all(StadiumBorder())),
-                    child: "Buy".text.make())
+                    child: "Add to cart".text.size(12).make())
               ],
             ).pOnly(right: 8.0)
           ],
