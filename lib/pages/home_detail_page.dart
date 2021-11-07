@@ -15,7 +15,9 @@ class HomeDetailPage extends StatelessWidget {
     return SafeArea(
       bottom: false,
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+        ),
         backgroundColor: MyTheme.creamColor,
         bottomNavigationBar: Container(
           color: Colors.white,
