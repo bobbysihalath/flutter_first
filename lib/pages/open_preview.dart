@@ -9,7 +9,7 @@ class OpenPageView extends StatelessWidget {
   const OpenPageView({Key key}) : super(key: key);
 
   Future<nativePdf.PdfDocument> _getDocument() async {
-    if (await nativePdf.hasSupport()) {
+    if (await nativePdf.hasPdfSupport()) {
       final dir = await getExternalStorageDirectory();
       final document =
           await nativePdf.PdfDocument.openFile('${dir.path}/receipt.pdf');
