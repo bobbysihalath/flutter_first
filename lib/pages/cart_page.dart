@@ -53,14 +53,8 @@ class _CardTotal extends StatelessWidget {
   }
 }
 
-class _CardList extends StatefulWidget {
-  const _CardList({Key key}) : super(key: key);
 
-  @override
-  _CardListState createState() => _CardListState();
-}
-
-class _CardListState extends State<_CardList> {
+class _CardList extends StatelessWidget {
   final _cart = CartModel();
 
   @override
@@ -75,9 +69,9 @@ class _CardListState extends State<_CardList> {
                     icon: Icon(Icons.remove_circle_outline),
                     onPressed: ()  {
                       _cart.remove(_cart.items[index]);
-                      setState(() {
-
-                      });
+                      // setState(() {
+                      //
+                      // });
                     },
                   ),
                   title: _cart.items[index].name.text.make(),
