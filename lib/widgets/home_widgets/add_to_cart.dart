@@ -18,7 +18,7 @@ class AddToCard extends StatelessWidget {
   Widget build(BuildContext context) {
     // get change state with VxState
     VxState.listen(context,to: [
-      AddMutation
+      AddMutation,RemoveMutation
     ]);
 
     final CartModel _cart = (VxState.store as MyStore).cart;
