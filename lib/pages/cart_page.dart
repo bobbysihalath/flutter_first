@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_catalog/models/cart.dart';
 import 'package:flutter_catalog/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -24,12 +25,13 @@ class _CardTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _card = CartModel();
     return SizedBox(
       height: 200,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          '\$9999'.text.xl5.color(context.theme.accentColor).make(),
+          '\$${_card.totalPrice}'.text.xl5.color(context.theme.accentColor).make(),
           30.widthBox,
           ElevatedButton(
               onPressed: () {
@@ -55,10 +57,11 @@ class _CardList extends StatefulWidget {
 }
 
 class _CardListState extends State<_CardList> {
+  final _card = CartModel();
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: 5,
+        itemCount: _card.items?.length,
         itemBuilder: (context, index) =>
             ListTile(
               leading: Icon(Icons.done),
@@ -66,7 +69,7 @@ class _CardListState extends State<_CardList> {
                 icon: Icon(Icons.remove_circle_outline),
                 onPressed: () => {},
               ),
-              title: "Item 1".text.make(),
+              title: _card.items[index].name.text.make(),
             ));
   }
 }
