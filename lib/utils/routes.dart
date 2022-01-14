@@ -6,4 +6,5 @@ class MyRoutes {
   //========Print route =============
   static String printRoute = "/print_route";
   static String pdfView = "/pdf_view";
+  static String bottomPage = "/bottom_page";
 }
