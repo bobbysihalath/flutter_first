@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_catalog/core/store.dart';
 import 'package:flutter_catalog/pages/bottom_page.dart';
 import 'package:flutter_catalog/pages/cart_page.dart';
+import 'package:flutter_catalog/pages/complex_layout.dart';
 import 'package:flutter_catalog/pages/login_page.dart';
 import 'package:flutter_catalog/pages/open_preview.dart';
 import 'package:flutter_catalog/pages/print_page.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
       theme: MyTheme.lightTheme(context),
       darkTheme: MyTheme.darkTheme(context),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.bottomPage,
+      initialRoute: '/complex_layout',
       routes: {
         "/": (context) => LoginPage(),
         MyRoutes.homeRoute: (context) => HomePage(),
@@ -36,7 +37,8 @@ class MyApp extends StatelessWidget {
         MyRoutes.printRoute: (context) => PrintPage(),
         MyRoutes.cartRoute: (context) => CartPage(),
         MyRoutes.pdfView: (context) => OpenPageView(),
-        MyRoutes.bottomPage: (context) => BottomBarPage()
+        MyRoutes.bottomPage: (context) => BottomBarPage(),
+        '/complex_layout': (context) => ComplexLayout()
       },
     );
   }
