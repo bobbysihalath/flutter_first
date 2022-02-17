@@ -7,4 +7,6 @@ class MyRoutes {
   static String printRoute = "/print_route";
   static String pdfView = "/pdf_view";
   static String bottomPage = "/bottom_page";
+  static String billPage = "/bill_page";
+  static String myLayoutPage = "/my_layout_page";
 }

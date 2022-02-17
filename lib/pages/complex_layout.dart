@@ -23,7 +23,7 @@ class ComplexLayout extends StatelessWidget {
           ),
           TextField(
             onChanged: (text){
-              _doSomething(text);
+              // _doSomething(text);
             },
           ),
         ],
@@ -31,11 +31,11 @@ class ComplexLayout extends StatelessWidget {
     );
   }
 
-  void _doSomething(String text) {
-    setState(() {
-      _textString = text;
-    });
-  }
+  // void _doSomething(String text) {
+  //   setState(() {
+  //     _textString = text;
+  //   });
+  // }
 
   Widget myLayoutWidget() {
     return Container(

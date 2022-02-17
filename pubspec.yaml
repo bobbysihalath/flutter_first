@@ -31,6 +31,7 @@ dependencies:
   google_fonts: ^2.1.0
   http: ^0.13.4
   velocity_x: ^1.4.1
+  folding_cell: ^0.1.2
 
   native_pdf_renderer: any
   image: any
